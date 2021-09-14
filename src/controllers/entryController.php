@@ -34,12 +34,9 @@ include '../models/Transaction.php';
     return $dictionary;
   }
 
-  function getAll($col = "date_recorded", $query = ''){
+  function getAll($col = "date_recorded", $query = '*'){
     global $conn;
     $dictionary = [];
-    if(!$query && $col = "date_recorded"){
-      $query = date('Y-m-d');
-    }
 
     $stmt = $conn->prepare("SELECT * FROM entries WHERE $col=? ORDER BY date_recorded");
     $stmt->bind_param("s", $query);

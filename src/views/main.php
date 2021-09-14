@@ -13,26 +13,28 @@ $total = 0;
     
 <form action="" method="post">
 
-    <select name="filter-key">  
-      <option value="" disabled selected>Choose option</option>
-      <option value="date_recorded">date</option>  
-      <option value="expense">amount</option>  
-      <option value="comment">comment</option>  
-      <option value="expense_type">income</option>  
-    </select>
-    
-    <input type="submit" value="filter"/>
+  <select name="filter-key" id="filter-key" onchange='loadNewContent()'>  
+    <option value="" disabled selected>Choose option</option>
+    <option value="date_recorded">date</option>  
+    <option value="expense">amount</option>  
+    <option value="comment">comment</option>  
+    <option value="expense_type">transaction type</option>  
+  </select>
+  <div id="new-form" class="form-group mb-3">
+  </div>
+  <input type="submit" value="filter"/>
 </form>
 
     <?php
-    echo $_REQUEST['filter-key'];
-    // if(isset($_POST['filter-key'])){
-    //   if(!empty($_POST['filter-key'])) {
-        // $dictionary = getAll("expense", "5");
-    // } else {
-        $dictionary = getAll();
-    // }
-    // }
+    console_log($_POST);
+    if(isset($_POST['filter-key']) && isset($_POST['filter-value'])){
+        $dictionary = getAll($_POST['filter-key'], $_POST['filter-value']);
+    } else {
+      $expenses = getExpenses();
+      $income = getIncome();
+      $dictionary = [...$expenses, ...$income];
+    }
+    
 console_log($dictionary);
 include 'Itable.php';
 ?>
