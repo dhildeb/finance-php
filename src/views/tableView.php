@@ -9,7 +9,7 @@ $income = getIncome();
 $dictionary = [...$expenses, ...$income];
 
 if(isset($_POST['submit'])){
-  // createExpense();
+  createExpense();
   header("location: ../public/index.php");
   return;
 }

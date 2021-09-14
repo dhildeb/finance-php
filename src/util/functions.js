@@ -1,4 +1,19 @@
+let today = new Date()
+let dd = today.getDate()
+let mm = today.getMonth()+1
+let yyyy = today.getFullYear()
+if(dd<10) 
+{
+    dd='0'+dd;
+} 
+
+if(mm<10) 
+{
+    mm='0'+mm;
+} 
+today = yyyy+'-'+mm+'-'+dd;
 function loadNewContent(){
+  console.log(today)
  const e = document.getElementById('filter-key')
  const value = e.options[e.selectedIndex].value;
  console.log(value)
@@ -23,7 +38,7 @@ function loadNewContent(){
 
 const dateTemplate = `
 <input class="form-control" type="date" name="filter-value" id="filter-value" 
-class="form-control" value="<? date('Y-m-d'); ?>">
+class="form-control" value="${today}">
 `
 //                              ^^^ date not auto filling
 

@@ -6,6 +6,7 @@
       <th scope="col">DATE</th>
       <th scope="col">EXPENSE</th>
       <th scope="col">DESCRIPTION</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +32,12 @@
           }
         echo "
           <td>".$dictionary[$i]->description."</td>
+          <td>
+          <form action='' method='post'>
+            <input type='hidden' name='id' value=".$dictionary[$i]->id.">
+            <button class='text-danger click' type='submit' title='delete entry'>X</button>
+          </form>
+          </td>
           ";
       }
         echo "
@@ -41,3 +48,11 @@
 
   </tbody>
 </table>
+
+<?php
+include_once '../controllers/entryController.php';
+
+if(isset($_POST['id'])){
+  console_log('id: '.$_POST['id']);
+  deleteEnetry($_POST['id']);
+}

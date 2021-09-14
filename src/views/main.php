@@ -26,7 +26,6 @@ $total = 0;
 </form>
 
     <?php
-    console_log($_POST);
     if(isset($_POST['filter-key']) && isset($_POST['filter-value'])){
         $dictionary = getAll($_POST['filter-key'], $_POST['filter-value']);
     } else {
@@ -35,7 +34,6 @@ $total = 0;
       $dictionary = [...$expenses, ...$income];
     }
     
-console_log($dictionary);
 include 'Itable.php';
 ?>
 </div>

@@ -5,7 +5,6 @@ include '../models/Transaction.php';
     global $conn;
     $dictionary = [];
     $res = $conn->query($sql);
-    console_log($res);
     if ($res->num_rows > 0) {
       while($row = $res->fetch_assoc()) {
         array_push($dictionary, new Transaction($row['id'], $row["expense_type"], $row["date_recorded"], $row["expense"], $row["comment"]));
@@ -43,7 +42,6 @@ include '../models/Transaction.php';
     $stmt->execute();
     $res = $stmt->get_result();
     
-    console_log($res);
     if ($res->num_rows > 0) {
       while($row = $res->fetch_assoc()) {
         array_push($dictionary, new Transaction($row['id'], $row["expense_type"], $row["date_recorded"], $row["expense"], $row["comment"]));
@@ -101,13 +99,18 @@ include '../models/Transaction.php';
 
   function deleteEnetry($id){
     global $conn;
-    $query = 'DELETE FROM entries WHERE id = :id';
+    $query = 'DELETE FROM entries WHERE id = ?';
     $stmt = $conn->prepare($query);
-    $stmt->bindValue(':id', $id);
     if(!$stmt){
-      echo 'error deleting';
+      error_log('mysqli prepare() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+      exit;
+    }
+    $stmt->bind_param('i', $id);
+    if(!$stmt){
+      console_log('error deleting');
     }else{
-      echo 'entry deleted';
+      console_log('entry deleted');
     }
     $stmt->execute();
     $stmt->closeCursor();
