@@ -17,7 +17,8 @@
       <textarea type="text" name="description" id="description" class="form-control"></textarea>
     </div>
     <input type="hidden" name="action" value="tableView">
-    <button type="submit" name="submit" value="expense-item" class="btn btn-info" href="?action=tableView">Submit</button>
+    <button type="submit" name="submit" value="expense-item" class="btn btn-info"
+      href="?action=tableView">Submit</button>
   </form>
 
 </div>

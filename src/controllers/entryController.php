@@ -5,6 +5,7 @@ include '../models/Transaction.php';
     global $conn;
     $dictionary = [];
     $res = $conn->query($sql);
+    console_log($res);
     if ($res->num_rows > 0) {
       while($row = $res->fetch_assoc()) {
         array_push($dictionary, new Transaction($row['id'], $row["expense_type"], $row["date_recorded"], $row["expense"], $row["comment"]));
@@ -19,10 +20,7 @@ include '../models/Transaction.php';
   function getExpenses(){
     $sql = "SELECT * FROM entries WHERE expense_type = 'expense' ORDER BY date_recorded";
    $dictionary = get($sql);
-    // sorting entries by date
-    // usort($dictionary, function($a, $b){
-    //   return strcmp($a->date, $b->date);
-    // });
+ 
     return $dictionary;
   }
 
@@ -113,6 +111,6 @@ include '../models/Transaction.php';
       console_log('entry deleted');
     }
     $stmt->execute();
-    $stmt->closeCursor();
+    $stmt->close();
     
   }
