@@ -40,16 +40,18 @@ const dateTemplate = `
 <input class="form-control" type="date" name="filter-value" id="filter-value" 
 class="form-control" value="${today}">
 `
-//                              ^^^ date not auto filling
 
 const amountTemplate = `
+<div class="input-group-prepend">
+<span class="input-group-text">$</span>
+</div>
 <input class="form-control" type="number" name="filter-value" id="filter-value" 
-class="form-control">
+class="form-control" placeholder="0.00">
 `
 
 const commentTemplate = `
 <input class="form-control" type="text" name="filter-value" id="filter-value" 
-class="form-control">
+class="form-control" placeholder="search comment...">
 `
 
 const typeTemplate = `

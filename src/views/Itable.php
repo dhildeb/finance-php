@@ -35,7 +35,7 @@
           <td>
           <form action='' method='post'>
             <input type='hidden' name='id' value=".$dictionary[$i]->id.">
-            <button class='text-danger click' type='submit' title='delete entry'>X</button>
+            <input class='text-white btn btn-danger click' type='submit' title='delete entry' value='X'>
           </form>
           </td>
           ";
@@ -53,6 +53,5 @@
 include_once '../controllers/entryController.php';
 
 if(isset($_POST['id'])){
-  console_log('id: '.$_POST['id']);
   deleteEnetry($_POST['id']);
 }

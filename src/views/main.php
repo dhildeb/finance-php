@@ -12,17 +12,20 @@ $total = 0;
     <h1>Welcome to Finance!</h1>
 
     <form action="" method="post">
-
-      <select name="filter-key" id="filter-key" onchange='loadNewContent()'>
-        <option value="" disabled selected>Choose option</option>
-        <option value="date_recorded">date</option>
-        <option value="expense">amount</option>
-        <option value="comment">comment</option>
-        <option value="expense_type">transaction type</option>
-      </select>
-      <div id="new-form" class="form-group mb-3">
+      <label for="filter-key">SEARCH</label>
+      <div class="input-group">
+        <select name="filter-key" id="filter-key" onchange='loadNewContent()'>
+          <option value="" disabled selected>Choose option</option>
+          <option value="date_recorded">date</option>
+          <option value="expense">amount</option>
+          <option value="comment">comment</option>
+          <option value="expense_type">transaction type</option>
+        </select>
+        
       </div>
-      <input type="submit" value="filter" />
+        <div id="new-form" class="form-group mb-3">
+          </div>
+          <input class="btn btn-info" type="submit" value="filter" />
     </form>
 
     <?php

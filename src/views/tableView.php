@@ -24,15 +24,20 @@ $months = array_unique($months);
 console_log($months);
 
 ?>
-<form action="" method="post">
-  <select name="month" id="month">
-    <?php
+<form class="w-25 text-center mx-auto my-3" action="" method="post">
+  <label for="month">SEARCH BY MONTH</label>
+  <div class="input-group">
+    <select class="custom-select" name="month" id="month">
+      <?php
     foreach($months as $m){
       echo "<option value='$m'>$m</option>";
     }
     ?>
-    <input type="submit" name="search" value="search" />
+    <div class="input-group-append">
+      <input class="btn btn-info" type="submit" name="search" value="search" />
+    </div>
   </select>
+</div>
 </form>
 <?php
 
