@@ -1,8 +1,8 @@
 <?php
 
-    require '../models/DatabaseConn.php';
-    require '../controllers/entryController.php';
-    include_once '../util/logger.php';
+    require 'src/models/DatabaseConn.php';
+    require 'src/controllers/entryController.php';
+    include_once 'src/util/logger.php';
 
      $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
      if(!$action) {
@@ -14,14 +14,14 @@
      
     switch($action){
       case "expenseForm":
-        include '../views/expenseForm.php';
+        include 'src/views/expenseForm.php';
         break;
       case "incomeForm":
-        include '../views/incomeForm.php';
+        include 'src/views/incomeForm.php';
         break;
       case "tableView":
-        include '../views/tableView.php';
+        include 'src/views/tableView.php';
         break;
       default:
-        include '../views/main.php';
+        include 'src/views/main.php';
     }
