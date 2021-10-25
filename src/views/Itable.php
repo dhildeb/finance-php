@@ -12,7 +12,9 @@
   <tbody>
 
     <?php
-      for($i = 0; $i < count($dictionary); $i++){
+    // optimizing performance calculate count outside loop
+    $count = count($dictionary);
+      for($i = 0; $i < $count; $i++){
         echo "
         <tr>
           <th scope='row'>".($i + 1)."</th>
